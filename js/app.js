@@ -128,11 +128,17 @@ function won() {
   console.log(pairs);
   if (pairs === 8){
     setTimeout(alert('/congratulations! You won!'), 500);
+    reset();
   }
 }
 
-
-
+function reset() {
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].classList.remove('match');
+    cards[i].classList.remove('open');
+    cards[i].classList.remove('show');
+  }
+}
 
 
 
