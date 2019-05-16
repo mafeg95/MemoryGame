@@ -70,14 +70,12 @@ function addToChecking(event){
 }
 
 function checkLength(){
-  debugger
   if (checking.length === 2){
     checkMatch();
   }
 }
 
 function checkMatch(){
-  debugger
   if (checking[0].children[0].classList.value === checking[1].children[0].classList.value){
     setTimeout(matched, 500);
   } else{
@@ -86,7 +84,6 @@ function checkMatch(){
 }
 
 function matched(){
-  debugger
   for (let i = 0; i < checking.length; i++) {
     checking[i].classList.add('match');
   }
@@ -101,7 +98,6 @@ function wrong(){
 }
 
 function closed(){
-  debugger
   for (var i = 0; i < checking.length; i++) {
     checking[i].classList.remove('show');
     checking[i].classList.remove('open');
