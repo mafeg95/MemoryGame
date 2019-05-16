@@ -138,6 +138,10 @@ function reset() {
     cards[i].classList.remove('open');
     cards[i].classList.remove('show');
   }
+  counter = 0;
+  updateMoves();
+  pairs = 0;
+  
 }
 
 let restartButton = document.getElementsByClassName('restart')[0];
