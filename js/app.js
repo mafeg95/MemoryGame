@@ -55,6 +55,8 @@ let changed = setSuit(shuffled);
 // }
 
 let checking = [];
+let pairs = 0;
+let counter = 0;
 
 function showCardSymbol(event){
   if (event.target.nodeName === 'LI'){
@@ -81,6 +83,8 @@ function checkMatch(){
   } else{
     wrong();
   }
+  counter += 1;
+  updateMoves();
 }
 
 function matched(){
@@ -88,6 +92,7 @@ function matched(){
     checking[i].classList.add('match');
   }
   checking = [];
+  pairs += 1;
 }
 
 function wrong(){
@@ -111,6 +116,13 @@ let deck = document.getElementsByClassName('deck')[0];
 deck.addEventListener('click', (e) => {
   showCardSymbol(e);
 });
+
+
+function updateMoves(){
+  let moves = document.getElementsByClassName('moves');
+  moves[0].innerHTML = counter;
+}
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
