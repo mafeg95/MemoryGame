@@ -48,6 +48,73 @@ let changed = setSuit(shuffled);
 
 
 
+// for (let i = 0; i < changed.length; i++) {
+//   changed[i].addEventListener("click", (e) => {
+//     showCardSymbol(e);
+//   });
+// }
+
+let checking = [];
+
+function showCardSymbol(event){
+  if (event.target.nodeName === 'LI'){
+    event.target.classList.add('show');
+    event.target.classList.add('open');
+    addToChecking(event);
+  }
+}
+
+function addToChecking(event){
+  checking.push(event.target);
+  checkLength();
+}
+
+function checkLength(){
+  debugger
+  if (checking.length === 2){
+    checkMatch();
+  }
+}
+
+function checkMatch(){
+  debugger
+  if (checking[0].children[0].classList.value === checking[1].children[0].classList.value){
+    setTimeout(matched, 500);
+  } else{
+    wrong();
+  }
+}
+
+function matched(){
+  debugger
+  for (let i = 0; i < checking.length; i++) {
+    checking[i].classList.add('match');
+  }
+  checking = [];
+}
+
+function wrong(){
+  for (var i = 0; i < checking.length; i++) {
+    checking[i].classList.add('wrong');
+  }
+  setTimeout(closed, 500);
+}
+
+function closed(){
+  debugger
+  for (var i = 0; i < checking.length; i++) {
+    checking[i].classList.remove('show');
+    checking[i].classList.remove('open');
+    checking[i].classList.remove('wrong');
+  }
+  checking = [];
+}
+
+let deck = document.getElementsByClassName('deck')[0];
+
+deck.addEventListener('click', (e) => {
+  showCardSymbol(e);
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
