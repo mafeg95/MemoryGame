@@ -127,7 +127,7 @@ function updateMoves(){
 function won() {
   console.log(pairs);
   if (pairs === 8){
-    setTimeout(alert('/congratulations! You won!'), 500);
+    setTimeout(alert(`Congratulations! You won in ${counter} moves`), 500);
     reset();
   }
 }
@@ -140,7 +140,9 @@ function reset() {
   }
 }
 
+let restartButton = document.getElementsByClassName('restart')[0];
 
+restartButton.addEventListener('click', reset);
 
 /*
  * set up the event listener for a card. If a card is clicked:
