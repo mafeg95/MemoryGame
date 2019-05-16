@@ -34,7 +34,7 @@ function getSuit(array){
 }
 
 function setSuit(array){
-  const cards = document.getElementsByClassName('card');
+  // const cards = document.getElementsByClassName('card');
   for (let i = 0; i < cards.length; i++) {
     cards[i].innerHTML = array[i];
   }
@@ -93,6 +93,7 @@ function matched(){
   }
   checking = [];
   pairs += 1;
+  won();
 }
 
 function wrong(){
@@ -122,6 +123,17 @@ function updateMoves(){
   let moves = document.getElementsByClassName('moves');
   moves[0].innerHTML = counter;
 }
+
+function won() {
+  console.log(pairs);
+  if (pairs === 8){
+    setTimeout(alert('/congratulations! You won!'), 500);
+  }
+}
+
+
+
+
 
 
 /*
