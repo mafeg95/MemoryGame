@@ -141,7 +141,7 @@ function reset() {
   counter = 0;
   updateMoves();
   pairs = 0;
-  
+  shuffle(cards);
 }
 
 let restartButton = document.getElementsByClassName('restart')[0];
