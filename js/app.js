@@ -124,6 +124,15 @@ deck.addEventListener('click', (e) => {
 function updateMoves(){
   let moves = document.getElementsByClassName('moves');
   moves[0].innerHTML = counter;
+  updateStar();
+}
+
+function updateStar(){
+  let stars = document.getElementsByClassName('fa-star');
+  if (counter % 10 === 0){
+    stars[0].classList.add('fa-star-o');
+    stars[0].classList.remove('fa-star');
+  }
 }
 
 function won() {
