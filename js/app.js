@@ -67,7 +67,9 @@ function showCardSymbol(event){
 }
 
 function addToChecking(event){
-  checking.push(event.target);
+  if (checking[0] !== event.target){
+    checking.push(event.target);
+  }
   checkLength();
 }
 
