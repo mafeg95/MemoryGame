@@ -23,7 +23,7 @@ function shuffle(array) {
     return array;
 }
 
-
+// creates the cards array by taking the suit of the html
 function getSuit(array){
   let cardsArray = [];
   for (let i = 0; i < array.length; i++) {
@@ -32,6 +32,7 @@ function getSuit(array){
   return cardsArray;
 }
 
+// changes the suit of the cards array after the cards array gets shuffled
 function setSuit(array){
   // const cards = document.getElementsByClassName('card');
   for (let i = 0; i < cards.length; i++) {
@@ -40,6 +41,7 @@ function setSuit(array){
   return cards;
 }
 
+// creates the cards, gets the suit, shuffles them, and then sets the suit
 let cards = document.getElementsByClassName('card');
 let suits = getSuit(cards);
 let shuffled = shuffle(suits);
@@ -47,16 +49,11 @@ let changed = setSuit(shuffled);
 
 
 
-// for (let i = 0; i < changed.length; i++) {
-//   changed[i].addEventListener("click", (e) => {
-//     showCardSymbol(e);
-//   });
-// }
-
 let checking = [];
 let pairs = 0;
 let counter = 0;
 
+// opens the cards once the card gets clicked
 function showCardSymbol(event){
   if (event.target.nodeName === 'LI'){
     event.target.classList.add('show');
@@ -65,6 +62,7 @@ function showCardSymbol(event){
   }
 }
 
+// adds the opened cards to the checking array
 function addToChecking(event){
   if (checking[0] !== event.target){
     checking.push(event.target);
@@ -72,12 +70,15 @@ function addToChecking(event){
   checkLength();
 }
 
+// if the length of the checkings array is 2, it checks to see if the
+// cards match
 function checkLength(){
   if (checking.length === 2){
     checkMatch();
   }
 }
 
+// checks to see if the cards match
 function checkMatch(){
   if (checking[0].children[0].classList.value === checking[1].children[0].classList.value){
     setTimeout(matched, 500);
@@ -88,6 +89,7 @@ function checkMatch(){
   updateMoves();
 }
 
+// keeps the cards opened if they match
 function matched(){
   for (let i = 0; i < checking.length; i++) {
     checking[i].classList.add('match');
@@ -97,6 +99,7 @@ function matched(){
   won();
 }
 
+// shows the user that the cards don't match
 function wrong(){
   for (var i = 0; i < checking.length; i++) {
     checking[i].classList.add('wrong');
@@ -104,6 +107,7 @@ function wrong(){
   setTimeout(closed, 500);
 }
 
+// closes the cards that are wrong
 function closed(){
   for (var i = 0; i < checking.length; i++) {
     checking[i].classList.remove('show');
@@ -115,10 +119,12 @@ function closed(){
 
 let deck = document.getElementsByClassName('deck')[0];
 
+// sets an event listener if the cards are clicked
 deck.addEventListener('click', (e) => {
   showCardSymbol(e);
 });
 
+// initializes the timer
 var timer = 0;
     function pad ( val ) { return val > 9 ? val : "0" + val; }
     setInterval( function(){
@@ -127,12 +133,14 @@ var timer = 0;
     }, 1000);
 
 
+// updates the moves that the user has completed
 function updateMoves(){
   let moves = document.getElementsByClassName('moves');
   moves[0].innerHTML = counter;
   updateStar();
 }
 
+// updates the stars as the moves increase
 function updateStar(){
   let stars = document.getElementsByClassName('fa-star');
   if (counter % 10 === 0){
@@ -141,15 +149,19 @@ function updateStar(){
   }
 }
 
+// checks to see if the game was won
 function won() {
   seconds = document.getElementById("seconds").innerHTML;
   minutes = document.getElementById("minutes").innerHTML;
+  stars = document.getElementsByClassName('fa-star');
   if (pairs === 8){
-    setTimeout(alert(`Congratulations! You won in ${counter} moves, and in ${minutes}:${seconds}`), 500);
+    setTimeout(alert(`Congratulations! You won in ${counter} moves, and in ${minutes}:${seconds}. Your
+      rating was ${stars.length} out of 3 stars`), 500);
     reset();
   }
 }
 
+// resets the game
 function reset() {
   for (var i = 0; i < cards.length; i++) {
     cards[i].classList.remove('match');
@@ -164,19 +176,19 @@ function reset() {
   shuffle(cards);
 }
 
+// function to reset the timer
 function resetTimer(){
   document.getElementById("seconds").innerHTML = "00";
   document.getElementById("minutes").innerHTML = "00";
   timer = 0;
 }
 
+// resets the stars
 function resetStars(){
   let stars = document.getElementsByClassName('fa-star-o');
-  if (stars){
-    for (var i = 0; i <= stars.length; i++) {
-      stars[0].classList.add('fa-star');
-      stars[0].classList.remove('fa-star-o');
-    }
+  while (stars.length > 0) {
+    stars[0].classList.add('fa-star');
+    stars[0].classList.remove('fa-star-o');
   }
 }
 

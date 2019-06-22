@@ -11,7 +11,7 @@ The starter project has some HTML and CSS styling to display a static version of
 
 To get started, open `js/app.js` and start building out the app's functionality
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+To play, simply click the cards on the page, and try to match the pairs. 
 
 ## Contributing
 
