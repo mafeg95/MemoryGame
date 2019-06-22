@@ -2,7 +2,6 @@
  * Create a list that holds all of your cards
  */
 
-
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -120,6 +119,13 @@ deck.addEventListener('click', (e) => {
   showCardSymbol(e);
 });
 
+var timer = 0;
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        document.getElementById("seconds").innerHTML=pad(++timer%60);
+        document.getElementById("minutes").innerHTML=pad(parseInt(timer/60,10));
+    }, 1000);
+
 
 function updateMoves(){
   let moves = document.getElementsByClassName('moves');
@@ -136,9 +142,10 @@ function updateStar(){
 }
 
 function won() {
-  console.log(pairs);
+  seconds = document.getElementById("seconds").innerHTML;
+  minutes = document.getElementById("minutes").innerHTML;
   if (pairs === 8){
-    setTimeout(alert(`Congratulations! You won in ${counter} moves`), 500);
+    setTimeout(alert(`Congratulations! You won in ${counter} moves, and in ${minutes}:${seconds}`), 500);
     reset();
   }
 }
@@ -151,9 +158,22 @@ function reset() {
   }
   counter = 0;
   updateMoves();
+  resetStars();
   pairs = 0;
+  timer = 0;
   shuffle(cards);
 }
+
+// function resetStars(){
+//   let stars = document.getElementsByClassName('fa-star-o');
+//   if (stars ){
+//     for (var i = 0; i < 3; i++) {
+//       // debugger
+//       stars[0].classList.add('fa-star');
+//       stars[0].classList.remove('fa-star-o');
+//     }
+//   }
+// }
 
 let restartButton = document.getElementsByClassName('restart')[0];
 
