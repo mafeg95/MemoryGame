@@ -164,16 +164,16 @@ function reset() {
   shuffle(cards);
 }
 
-// function resetStars(){
-//   let stars = document.getElementsByClassName('fa-star-o');
-//   if (stars ){
-//     for (var i = 0; i < 3; i++) {
-//       // debugger
-//       stars[0].classList.add('fa-star');
-//       stars[0].classList.remove('fa-star-o');
-//     }
-//   }
-// }
+function resetStars(){
+  let stars = document.getElementsByClassName('fa-star-o');
+  if (stars ){
+    for (var i = 0; i < 3; i++) {
+      // debugger
+      stars[0].classList.add('fa-star');
+      stars[0].classList.remove('fa-star-o');
+    }
+  }
+}
 
 let restartButton = document.getElementsByClassName('restart')[0];
 
