@@ -159,16 +159,21 @@ function reset() {
   counter = 0;
   updateMoves();
   resetStars();
+  resetTimer();
   pairs = 0;
-  timer = 0;
   shuffle(cards);
+}
+
+function resetTimer(){
+  document.getElementById("seconds").innerHTML = "00";
+  document.getElementById("minutes").innerHTML = "00";
+  timer = 0;
 }
 
 function resetStars(){
   let stars = document.getElementsByClassName('fa-star-o');
-  if (stars ){
-    for (var i = 0; i < 3; i++) {
-      // debugger
+  if (stars){
+    for (var i = 0; i <= stars.length; i++) {
       stars[0].classList.add('fa-star');
       stars[0].classList.remove('fa-star-o');
     }
