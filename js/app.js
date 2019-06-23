@@ -55,7 +55,8 @@ let counter = 0;
 
 // opens the cards once the card gets clicked
 function showCardSymbol(event){
-  if (event.target.nodeName === 'LI'){
+  debugger
+  if (event.target.nodeName === 'LI' && checking.length < 2){
     event.target.classList.add('show');
     event.target.classList.add('open');
     addToChecking(event);
@@ -64,9 +65,9 @@ function showCardSymbol(event){
 
 // adds the opened cards to the checking array
 function addToChecking(event){
-  if (checking[0] !== event.target && !(event.target.classList.contains('match'))){
-    checking.push(event.target);
-  }
+    if (checking[0] !== event.target && !(event.target.classList.contains('match'))){
+      checking.push(event.target);
+    }
   checkLength();
 }
 
