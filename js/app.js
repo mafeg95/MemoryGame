@@ -64,7 +64,8 @@ function showCardSymbol(event){
 
 // adds the opened cards to the checking array
 function addToChecking(event){
-  if (checking[0] !== event.target){
+  debugger
+  if (checking[0] !== event.target && !(event.target.classList.contains('match'))){
     checking.push(event.target);
   }
   checkLength();
