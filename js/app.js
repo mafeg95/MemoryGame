@@ -64,7 +64,6 @@ function showCardSymbol(event){
 
 // adds the opened cards to the checking array
 function addToChecking(event){
-  debugger
   if (checking[0] !== event.target && !(event.target.classList.contains('match'))){
     checking.push(event.target);
   }
@@ -174,7 +173,14 @@ function reset() {
   resetStars();
   resetTimer();
   pairs = 0;
-  shuffle(cards);
+  // debugger
+  reShuffleCard();
+}
+
+function reShuffleCard(){
+  let reSuits = getSuit(cards);
+  let reShuffled = shuffle(reSuits);
+  let reChanged = setSuit(reShuffled);
 }
 
 // function to reset the timer
