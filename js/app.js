@@ -52,10 +52,11 @@ let changed = setSuit(shuffled);
 let checking = [];
 let pairs = 0;
 let counter = 0;
+let gameStart = false;
 
 // opens the cards once the card gets clicked
 function showCardSymbol(event){
-  debugger
+
   if (event.target.nodeName === 'LI' && checking.length < 2){
     event.target.classList.add('show');
     event.target.classList.add('open');
@@ -123,15 +124,24 @@ let deck = document.getElementsByClassName('deck')[0];
 // sets an event listener if the cards are clicked
 deck.addEventListener('click', (e) => {
   showCardSymbol(e);
+  startTimer();
 });
 
 // initializes the timer
 var timer = 0;
     function pad ( val ) { return val > 9 ? val : "0" + val; }
-    setInterval( function(){
+
+var interval;
+
+function startTimer(){
+  if (gameStart === false){
+    interval = setInterval( function(){
         document.getElementById("seconds").innerHTML=pad(++timer%60);
         document.getElementById("minutes").innerHTML=pad(parseInt(timer/60,10));
-    }, 1000);
+      }, 1000);
+      gameStart = true;
+  }
+}
 
 
 // updates the moves that the user has completed
@@ -173,8 +183,9 @@ function reset() {
   updateMoves();
   resetStars();
   resetTimer();
+  gameStart = false;
+  clearInterval(interval);
   pairs = 0;
-  // debugger
   reShuffleCard();
 }
 
